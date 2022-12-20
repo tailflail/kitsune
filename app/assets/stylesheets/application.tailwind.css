@@ -8,6 +8,6 @@
     }
 
     .devise-form {
-        @apply bg-none border-2 border-neutral-400 rounded-lg p-[100px] text-neutral-200 text-lg;
+        @apply bg-none border-2 border-neutral-400 rounded-lg px-[100px] py-[50px] text-neutral-200 text-lg mt-4 mb-4;
     }
 }

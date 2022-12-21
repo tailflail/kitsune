@@ -3,7 +3,5 @@ Rails.application.routes.draw do
 
   get "home", to: "home#index", as: "home"
 
-  devise_for :users, controllers: {
-    sessions: "users/sessions"
-  }
+  devise_for :users
 end

@@ -4,10 +4,10 @@
 
 @layer components {
     .devise-form-field {
-        @apply text-neutral-900 rounded-lg border-none bg-neutral-200 mt-2;
+        @apply text-neutral-100 rounded-lg border-none bg-neutral-700 mt-2 h-[35px];
     }
 
     .devise-form {
-        @apply bg-none border-2 border-neutral-400 rounded-lg px-[100px] py-[50px] text-neutral-200 text-lg mt-4 mb-4;
+        @apply bg-none border-2 border-neutral-700 rounded-lg px-[100px] py-[50px] text-neutral-200 mt-4 mb-4;
     }
 }

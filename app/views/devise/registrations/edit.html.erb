@@ -1,9 +1,10 @@
 <div class="flex justify-center text-center relative">
   <div class="devise-form">
+    <h1 class="text-2xl font-bold text-neutral-100">Account settings</h1>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field mt-6">
+      <div class="field mt-12">
         <% if resource.avatar.attached? %>
           <%= image_tag resource.avatar, class: "w-[100px] h-[100px] rounded-full mx-auto" %>
         <% else %>
@@ -14,29 +15,31 @@
         </div>
       </div>
 
-      <div class="field mt-6">
-        <div><%= f.label :username %></div>
-        <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "devise-form-field" %>
-      </div>
-
-      <div class="field mt-6">
-        <div><%= f.label :email %></div>
-        <%= f.email_field :email, autocomplete: "email", class: "devise-form-field" %>
-      </div>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-
-      <div class="field mt-6">
-        <div><%= f.label :password, value: "New Password" %>
+      <div class="grid lg:grid-cols-2 sm:auto-cols-auto auto-rows-auto gap-x-10">
+        <div class="field mt-6">
+          <div><%= f.label :username %></div>
+          <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "devise-form-field" %>
         </div>
-        <%= f.password_field :password, autocomplete: "new-password", class: "devise-form-field" %>
-      </div>
 
-      <div class="field mt-6">
-        <div><%= f.label :password_confirmation, value: "Confirm new password" %></div>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "devise-form-field" %>
+        <div class="field mt-6">
+          <div><%= f.label :email %></div>
+          <%= f.email_field :email, autocomplete: "email", class: "devise-form-field" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field mt-6">
+          <div><%= f.label :password, value: "New Password" %>
+          </div>
+          <%= f.password_field :password, autocomplete: "new-password", class: "devise-form-field" %>
+        </div>
+
+        <div class="field mt-6">
+          <div><%= f.label :password_confirmation, value: "Confirm new password" %></div>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "devise-form-field" %>
+        </div>
       </div>
 
       <div class="field mt-6">

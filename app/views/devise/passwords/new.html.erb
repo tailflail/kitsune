@@ -1,16 +1,16 @@
 <div class="flex justify-center text-center relative">
   <div class="devise-form">
-    <div>Forgot your password?</div>
+    <h1 class="text-2xl font-bold text-neutral-100">Password reset</h1>
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field mt-6">
+      <div class="field mt-12">
         <div><%= f.label :email %></div>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "devise-form-field" %>
       </div>
 
       <div class="actions mt-6">
-        <%= f.submit "Send me reset password instructions", class: "cursor-pointer hover:text-yellow-200" %>
+        <%= f.submit "Send me reset password instructions", class: "cursor-pointer hover:underline hover:text-neutral-100" %>
       </div>
     <% end %>
   </div>

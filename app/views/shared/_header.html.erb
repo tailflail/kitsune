@@ -1,6 +1,6 @@
 <div>
   <div>
-    <nav class="flex items-center justify-between flex-wrap bg-neutral-800 p-4">
+    <nav class="flex items-center justify-between flex-wrap bg-neutral-800 px-4 py-4 lg:py-0 lg:h-[60px]">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
         <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
         <span class="font-semibold text-xl tracking-tight">Kitsune</span>
@@ -14,14 +14,20 @@
         <div class="text-m lg:flex-grow">
           <%= link_to "Home", home_path, class: "block mt-4 lg:inline-block lg:mt-0 text-neutral-200 hover:text-white mr-4" %>
         </div>
-        <div class="lg:flex lg:items-center block">
-          <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-green-200 border-green-100 hover:border-transparent hover:text-neutral-900 hover:bg-green-200 mr-4 mt-4 lg:mt-0">Create</a>
+        <div class="flex items-center block">
+          <div>
+            <%= link_to "Create", new_post_path,
+                        class: "inline-block text-sm px-4 py-2 leading-none border rounded text-green-200 border-green-100 hover:text-neutral-900 hover:bg-green-200 mr-8" %>
+          </div>
 
           <% if user_signed_in? %>
-            <div class="text-neutral-200 inline-block mr-4">
+            <a href="" class="mr-4">
+              <%= image_tag current_user.avatar, class: "w-[50px] h-[50px], min-w-[50px] rounded-full mx-auto block" %>
+            </a>
+            <div class="text-neutral-200 inline-block hover:text-neutral-100 mr-4">
               <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %>
             </div>
-            <div class=" text-neutral-200 inline-block hover:text-neutral-100">
+            <div class="text-neutral-200 inline-block hover:text-neutral-100">
               <%= link_to "Account settings", edit_user_registration_path %>
             </div>
           <% else %>
@@ -33,5 +39,5 @@
       </div>
     </nav>
   </div>
-  <%= image_tag("fox.jpg", class: "object-cover h-[300px] w-full") %>
+  <%= image_tag("fox.jpg", class: "object-cover h-[300px] w-full hidden lg:block") %>
 </div>

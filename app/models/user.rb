@@ -12,4 +12,5 @@ class User < ApplicationRecord
             format: { with: /\A[a-zA-Z][a-zA-Z0-9]+\z/, message: "%{value} format is invalid" }
 
   has_one_attached :avatar
+  has_many :posts
 end

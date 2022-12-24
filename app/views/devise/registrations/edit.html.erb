@@ -10,9 +10,7 @@
         <% else %>
           <%= image_tag current_user.gravatar_url, height: 100, width: 100, class: "rounded-full mx-auto" %>
         <% end %>
-        <div>
-          <%= f.file_field :avatar %>
-        </div>
+        <%= f.file_field :avatar, class: "file:mr-4 file:py-1 file:px-2 file:rounded-lg file:border-0 file:text-sm file:bg-neutral-200 file:text-neutral-900 hover:file:bg-neutral-300" %>
       </div>
 
       <div class="grid lg:grid-cols-2 sm:auto-cols-auto auto-rows-auto gap-x-10">

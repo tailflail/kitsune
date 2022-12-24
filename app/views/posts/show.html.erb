@@ -1,0 +1,33 @@
+<div class="text-neutral-100 m-4">
+  <div>
+    <div class="">
+      <%= image_tag @post.image, class: "max-w-[100%] max-h-[100%]" %>
+    </div>
+
+    <div class="border-2 border-neutral-700 rounded-lg mt-12 max-w-[1200px]">
+      <div class="flex items-center rounded-lg p-4">
+        <a href="" class="mr-4">
+          <%= image_tag @post.user.avatar, class: "w-[75px] h-[75px], min-w-[50px] rounded-full mx-auto block" %>
+        </a>
+
+        <div class="flex flex-col">
+          <div class="font-bold text-2xl">
+            <%= @post.title %>
+          </div>
+          <div>
+            By <a href="" class="font-bold"><%= @post.user.username %></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-neutral-700">
+        <div class="font-bold text-xl">
+          Description
+        </div>
+        <div class="mt-4">
+          <%= @post.description %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

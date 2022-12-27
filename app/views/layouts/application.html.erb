@@ -11,10 +11,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="h-full">
+  <body class="h-full bg-neutral-900">
     <main class="flex flex-col h-screen justify-between">
       <%= render "shared/header" %>
-      <div class="bg-neutral-900 h-[100%] flex justify-center items-center">
+      <div class="lg:h-[100%] flex justify-center items-center">
         <%= yield %>
       </div>
       <%= render "shared/footer" %>

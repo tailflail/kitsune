@@ -22,7 +22,7 @@
 
           <% if user_signed_in? %>
             <a href="" class="mr-4">
-              <%= image_tag current_user.avatar, class: "w-[50px] h-[50px], min-w-[50px] rounded-full mx-auto block" %>
+              <%= image_tag current_user.avatar, class: "w-[50px] h-[50px], min-w-[50px] rounded-lg mx-auto block" %>
             </a>
             <div class="text-neutral-200 inline-block hover:text-neutral-100 mr-4">
               <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %>
@@ -39,5 +39,5 @@
       </div>
     </nav>
   </div>
-  <%= image_tag("fox.jpg", class: "object-cover h-[300px] w-full hidden lg:block") %>
+  <%= image_tag("fox-banner.jpg", class: "object-cover h-[125px] lg:h-[300px]") %>
 </div>

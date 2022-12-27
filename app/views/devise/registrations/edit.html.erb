@@ -6,7 +6,7 @@
 
       <div class="field mt-12">
         <% if resource.avatar.attached? %>
-          <%= image_tag resource.avatar, class: "w-[100px] h-[100px] rounded-full mx-auto" %>
+          <%= image_tag resource.avatar, class: "w-[100px] h-[100px] rounded-lg mx-auto" %>
         <% else %>
           <%= image_tag current_user.gravatar_url, height: 100, width: 100, class: "rounded-full mx-auto" %>
         <% end %>

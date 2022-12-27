@@ -26,7 +26,11 @@
           Description
         </div>
         <div class="mt-4">
-          <%= @post.description %>
+          <% if @post.description.empty? %>
+            <em class="text-sm">No description available.</em>
+          <% else %>
+            <%= @post.description %>
+          <% end %>
         </div>
       </div>
     </div>

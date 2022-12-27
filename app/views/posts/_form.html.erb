@@ -10,7 +10,7 @@
     <div><%= form.text_area :description, class: "devise-form-field lg:w-[600px] lg:h-[200px] lg:max-h-[500px] lg:min-h-[200px]" %></div>
   </div>
 
-  <% if current_page?(new_post_path) %>
+  <% if @post.id.nil? %>
     <div class="mt-12">
       <label class="flex justify-center items-center h-32 px-4 border-2 border-neutral-500 border-dashed rounded-md appearance-none cursor-pointer hover:border-neutral-600">
         <%= form.file_field :image, class: "file:mr-4 file:py-1 file:px-2 file:rounded-lg file:border-0 file:text-sm file:bg-neutral-200 file:text-neutral-900 hover:file:bg-neutral-300" %>

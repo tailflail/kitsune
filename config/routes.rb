@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   get "home", to: "static#home", as: "home"
 
   devise_for :users
+
   resources :posts
+  resources :users, only: [:show], param: :username
 end

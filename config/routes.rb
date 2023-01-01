@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
 
-  get "home", to: "home#index", as: "home"
+  get "home", to: "static#home", as: "home"
 
   devise_for :users
   resources :posts

@@ -4,6 +4,6 @@ class Post < ApplicationRecord
   validates :image, presence: true, blob: { content_type: %w[image/png image/jpg image/jpeg image/gif],
                                             size_range: 0.1..(100.megabytes) }
 
-  has_one_attached :image
+  has_one_attached :image, dependent: :destroy
   belongs_to :user
 end

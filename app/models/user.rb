@@ -11,8 +11,8 @@ class User < ApplicationRecord
             length: { minimum: 4, maximum: 16, message: "must be between 4 and 16 characters" },
             format: { with: /\A[a-zA-Z][a-zA-Z0-9]+\z/, message: "%{value} format is invalid" }
 
-  has_one_attached :avatar
-  has_many :posts
+  has_one_attached :avatar, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   def to_param
     username

@@ -1,12 +1,12 @@
 <div class="flex flex-col text-neutral-200 my-[10px]">
   <div class="flex flex-col items-center">
-    <% if current_user.avatar.attached? %>
+    <% if @user.avatar.attached? %>
       <div>
-        <%= image_tag current_user.avatar, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
+        <%= image_tag @user.avatar, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
       </div>
     <% else %>
       <div>
-        <%= image_tag current_user.gravatar_url, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
+        <%= image_tag @user.gravatar_url, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
       </div>
     <% end %>
     <h1 class="text-2xl font-bold mt-[10px]">

@@ -8,7 +8,7 @@
     <div class="border-2 border-neutral-700 rounded-lg lg:w-[1200px]">
       <div class="flex items-center rounded-lg p-4">
         <a href="<%= user_path(@post.user) %>" class="mr-4">
-          <% if current_user.avatar.attached? %>
+          <% if @post.user.avatar.attached? %>
             <%= image_tag @post.user.avatar, class: "w-[75px] h-[75px] min-w-[50px] rounded-lg mx-auto block" %>
           <% else %>
             <%= image_tag @post.user.gravatar_url, class: "w-[75px] h-[75px] min-w-[50px] rounded-lg mx-auto block" %>

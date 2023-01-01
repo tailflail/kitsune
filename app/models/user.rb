@@ -13,4 +13,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :posts
+
+  def to_param
+    username
+  end
 end

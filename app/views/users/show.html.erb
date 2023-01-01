@@ -15,7 +15,7 @@
   </div>
 
   <div class="flex flex-wrap items-center mt-[100px]">
-    <% @posts.each do |post| %>
+    <% @posts.with_attached_image.each do |post| %>
       <div class="flex grow justify-center bg-cover" style="background-image: url('<%= url_for(post.image) %>')">
         <a href="<%= post_path(post) %>">
           <div class="p-[75px] lg:p-[125px]"></div>

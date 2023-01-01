@@ -1,3 +1,26 @@
-<div class="flex self-start mt-[10px] bg-neutral-800 w-[1000px] h-[800px]">
-  test
+<div class="flex flex-col text-neutral-200 my-[10px]">
+  <div class="flex flex-col items-center">
+    <% if current_user.avatar.attached? %>
+      <div>
+        <%= image_tag current_user.avatar, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
+      </div>
+    <% else %>
+      <div>
+        <%= image_tag current_user.gravatar_url, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
+      </div>
+    <% end %>
+    <h1 class="text-2xl font-bold mt-[10px]">
+      @<%= @user.username %>
+    </h1>
+  </div>
+
+  <div class="flex flex-wrap items-center mt-[100px]">
+    <% @posts.each do |post| %>
+      <div class="flex grow justify-center bg-cover" style="background-image: url('<%= url_for(post.image) %>')">
+        <a href="<%= post_path(post) %>">
+          <div class="p-[75px] lg:p-[125px]"></div>
+        </a>
+      </div>
+    <% end %>
+  </div>
 </div>

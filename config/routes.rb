@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "home#index"
+  root "static#home"
 
   get "home", to: "static#home", as: "home"
 

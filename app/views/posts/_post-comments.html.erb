@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-3 mt-6 min-w-[100%] lg:w-[1200px] relative">
-  <% @post.comments.each do |comment| %>
-    <div class="flex rounded-lg border border-neutral-700 p-4">
+  <% @comments.each do |comment| %>
+    <div class="flex rounded-lg border border-neutral-700 p-4 relative">
       <div class="flex gap-3">
         <a href="<%= user_path(comment.user) %>" class="shrink-0">
           <% if comment.user.avatar.attached? %>
@@ -14,7 +14,8 @@
           <div class="font-bold">
             <a href="<%= user_path(comment.user) %>"><%= comment.user.username %></a>
           </div>
-          <div class="break-all">
+          <div class="absolute right-[10px] text-sm text-neutral-500"><%= comment.creation_date %>, <%= comment.creation_time %></div>
+          <div class="break-all mt-2">
             <div><%= comment.body %></div>
           </div>
 

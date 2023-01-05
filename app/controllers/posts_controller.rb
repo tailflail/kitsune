@@ -1,8 +1,13 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_post, only: [:edit, :update, :destroy]
   def new
     @post = current_user.posts.build
+  end
+
+  def show
+    @post = Post.includes(:user, :comments).find(params[:id])
+    @comments = @post.comments.includes(:user)
   end
 
   def create

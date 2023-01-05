@@ -59,12 +59,18 @@
                 <div><%= comment.body %></div>
               </div>
 
-              <% if current_user == comment.user %>
-                <div class="mt-4">
-                  <%= button_to "Delete", post_comment_path(@post.id, comment.id), method: :delete, data: { turbo_confirm: "Are you sure you want to delete this comment?"},
-                                class: "inline-block px-4 py-2 leading-none rounded text-red-800 hover:text-neutral-100 border border-red-900 hover:bg-red-900" %>
-                </div>
-              <% end %>
+              <div class="flex gap-2">
+                <% if current_user == comment.user %>
+                  <div class="mt-4">
+                    <%= link_to "Edit", edit_post_comment_path(@post.id, comment.id),
+                                class: "inline-block px-3 py-2 leading-none rounded text-neutral-500 hover:text-neutral-100 border border-neutral-500 hover:bg-neutral-500" %>
+                  </div>
+                  <div class="mt-4">
+                    <%= button_to "Delete", post_comment_path(@post.id, comment.id), method: :delete, data: { turbo_confirm: "Are you sure you want to delete this comment?"},
+                                  class: "inline-block px-3 py-2 leading-none rounded text-red-800 hover:text-neutral-100 border border-red-900 hover:bg-red-900" %>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -73,7 +79,7 @@
 
     <div class="mt-6">
       <% if user_signed_in? %>
-        <%= render "comments/comment-form" %>
+        <%= render "comments/new-comment-form" %>
       <% end %>
     </div>
   </div>

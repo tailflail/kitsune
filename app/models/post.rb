@@ -5,5 +5,6 @@ class Post < ApplicationRecord
                                             size_range: 0.1..(100.megabytes) }
 
   has_one_attached :image, dependent: :destroy
+  has_many :comments, dependent: :destroy
   belongs_to :user
 end

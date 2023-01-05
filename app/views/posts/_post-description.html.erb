@@ -1,0 +1,33 @@
+<div class="border-2 border-neutral-700 rounded-lg min-w-[100%] lg:min-w-[1200px]">
+  <div class="flex items-center rounded-lg p-4">
+    <a href="<%= user_path(@post.user) %>" class="mr-4">
+      <% if @post.user.avatar.attached? %>
+        <%= image_tag @post.user.avatar, class: "w-[75px] h-[75px] min-w-[50px] rounded-lg mx-auto block" %>
+      <% else %>
+        <%= image_tag @post.user.gravatar_url, class: "w-[75px] h-[75px] min-w-[50px] rounded-lg mx-auto block" %>
+      <% end %>
+    </a>
+
+    <div class="flex flex-col">
+      <div class="font-bold text-2xl">
+        <%= @post.title %>
+      </div>
+      <div>
+        By <a href="<%= user_path(@post.user) %>" class="font-bold"><%= @post.user.username %></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-4 bg-neutral-700">
+    <div class="font-bold text-xl">
+      Description
+    </div>
+    <div class="mt-4">
+      <% if @post.description.empty? %>
+        <em class="text-sm">No description available.</em>
+      <% else %>
+        <div class="break-all"><%= @post.description %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

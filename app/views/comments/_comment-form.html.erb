@@ -1,0 +1,12 @@
+<div class="text-center">
+  <%= form_with model: [@post, @post.comments.build] do |form| %>
+    <div>
+      <div><%= form.label :body, class: "hidden" %></div>
+      <div><%= form.text_area :body, class: "devise-form-field lg:w-[600px] lg:h-[100px] lg:max-h-[200px] min-h-[100px]" %></div>
+    </div>
+
+    <div class="mt-4">
+      <%= form.submit class: "border rounded border-green-100 px-2 py-2 text-green-100 hover:bg-green-100 hover:text-green-900 cursor-pointer" %>
+    </div>
+  <% end %>
+</div>

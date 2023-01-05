@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   get "home", to: "static#home", as: "home"
 
-  devise_for :users do
-    get ""
-  end
+  devise_for :users
 
-  resources :posts
+  resources :posts do
+    resources :comments, except: [:show, :index]
+  end
   resources :users, only: [:show], param: :username
 end

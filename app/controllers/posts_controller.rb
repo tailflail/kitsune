@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :image)
+    params.require(:post).permit(:title, :description, :image, :tag_list)
   end
 
   def find_and_authorize_post

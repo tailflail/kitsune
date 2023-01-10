@@ -45,5 +45,7 @@
       </div>
     </nav>
   </div>
-  <%= image_tag("fox-banner.jpg", class: "object-cover h-[125px] lg:h-[300px]") %>
+  <% unless params[:action] == "show" && params[:controller] == "posts" %>
+    <%= image_tag("fox-banner.jpg", class: "object-cover h-[125px] lg:h-[300px]") %>
+  <% end %>
 </div>

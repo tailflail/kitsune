@@ -1,9 +1,3 @@
-<div class="flex flex-wrap items-center">
-  <% @posts.each do |post| %>
-    <div class="flex grow justify-center bg-cover" style="background-image: url('<%= url_for(post.image) %>')">
-      <a href="<%= post_path(post) %>">
-        <div class="p-[75px] lg:p-[125px]"></div>
-      </a>
-    </div>
-  <% end %>
+<div class="my-[50px]">
+  <%= render partial: "shared/posts", locals: { posts: @posts } %>
 </div>

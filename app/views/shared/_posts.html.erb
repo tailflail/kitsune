@@ -1,0 +1,9 @@
+<div class="flex flex-wrap items-center justify-center gap-2">
+  <% posts.with_attached_image.each do |post| %>
+    <div class="bg-cover" style="background-image: url('<%= url_for(post.image) %>')">
+      <a href="<%= post_path(post) %>">
+        <div class="p-[65px] md:p-[95px] lg:p-[124px]"></div>
+      </a>
+    </div>
+  <% end %>
+</div>

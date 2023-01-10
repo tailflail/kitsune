@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_and_authorize_comment, only: [:destroy, :edit, :update]
+  before_action :find_post, only: [:create, :edit, :update]
 
   def create
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
     @comment.user = current_user
 
@@ -12,20 +13,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @post = @comment.post
     @comment.destroy
     redirect_to @post
   end
 
-  def edit
-    @post = Post.find(params[:post_id])
-    @comment = Comment.find(params[:id])
-  end
-
   def update
-    @post = Post.find(params[:post_id])
-    @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
       redirect_to @post
     else
@@ -34,6 +27,15 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def find_and_authorize_comment
+    @comment = Comment.find(params[:id])
+    authorize @comment
+  end
+
+  def find_post
+    @post = Post.find(params[:post_id])
+  end
 
   def comment_params
     params.require(:comment).permit(:body, :post_id)

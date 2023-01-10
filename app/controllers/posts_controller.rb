@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :find_post, only: [:edit, :update, :destroy]
+  before_action :find_and_authorize_post, only: [:edit, :update, :destroy]
   def new
     @post = current_user.posts.build
   end
@@ -39,7 +39,8 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :description, :image)
   end
 
-  def find_post
+  def find_and_authorize_post
     @post = Post.find(params[:id])
+    authorize @post
   end
 end

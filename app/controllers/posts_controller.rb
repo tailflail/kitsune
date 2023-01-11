@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.includes(:user, :comments).find(params[:id])
     @comments = @post.comments.includes(:user)
-    @random_posts = Post.all.order("RANDOM()").limit(6)
+    @random_posts = Post.where(user_id: @post.user_id).order("RANDOM()").limit(6)
   end
 
   def create

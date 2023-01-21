@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show], param: :username do
     member do
+      get "gallery", to: "users#gallery", as: "gallery"
       get "following", to: "users#following", as: "following"
       get "followers", to: "users#followers", as: "followers"
     end

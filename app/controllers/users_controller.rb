@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     unless @user
       raise ActionController::RoutingError.new('Not Found')
     end
+
+    redirect_to gallery_user_path(@user)
+  end
+
+  def gallery
     @posts = @user.posts.order(created_at: :desc)
   end
 

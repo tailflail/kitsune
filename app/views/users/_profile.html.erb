@@ -1,16 +1,14 @@
 <div class="flex flex-col items-center my-[50px]">
   <% if user.avatar.attached? %>
-    <div>
-      <%= image_tag user.avatar, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
-    </div>
+    <%= image_tag user.avatar, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
   <% else %>
-    <div>
-      <%= image_tag user.gravatar_url, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
-    </div>
+    <%= image_tag user.gravatar_url, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
   <% end %>
+
   <h1 class="text-2xl font-bold mt-[10px]">
     @<%= user.username %>
   </h1>
+
 </div>
 
 <div class="flex justify-center gap-20 items-center w-[2559px] py-4 border-y-2 border-neutral-800 mb-[15px]">

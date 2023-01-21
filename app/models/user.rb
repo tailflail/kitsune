@@ -12,9 +12,42 @@ class User < ApplicationRecord
             format: { with: /\A[a-zA-Z][a-zA-Z0-9]+\z/, message: "%{value} format is invalid" }
 
   has_one_attached :avatar, dependent: :destroy
+
   has_many :posts, dependent: :destroy
+
   has_many :comments, dependent: :destroy
 
+  has_many :active_relationships,
+           class_name: "UserRelationship",
+           foreign_key: "follower_id",
+           dependent: :destroy
+
+  has_many :following, through: :active_relationships, source: :followed
+
+  has_many :passive_relationships,
+           class_name: "UserRelationship",
+           foreign_key: "followed_id",
+           dependent: :destroy
+
+  has_many :followers, through: :passive_relationships, source: :follower
+
+  def follow(user)
+    self.active_relationships.create(followed_id: user.id)
+  end
+
+  def unfollow(user)
+    self.active_relationships.find_by(followed_id: user.id).destroy
+  end
+
+  def following?(user)
+    self.following.include?(user)
+  end
+
+  def followed_by?(user)
+    self.followers.include?(user)
+  end
+
+  # user_path helper links by username instead of id
   def to_param
     username
   end

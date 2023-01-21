@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_10_181515) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_20_234002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,6 +92,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_181515) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "user_relationships", force: :cascade do |t|
+    t.bigint "follower_id", null: false
+    t.bigint "followed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_user_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_user_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_user_relationships_on_follower_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "email", default: "", null: false
@@ -112,4 +122,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_181515) do
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "user_relationships", "users", column: "followed_id"
+  add_foreign_key "user_relationships", "users", column: "follower_id"
 end

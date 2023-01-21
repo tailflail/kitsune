@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       get "followers", to: "users#followers", as: "followers"
     end
   end
+
+  resources :user_relationships, only: [:create, :destroy]
 end

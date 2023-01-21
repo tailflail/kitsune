@@ -1,4 +1,6 @@
-<div class="flex flex-col">
+<div class="flex w-[100%] flex-col">
   <%= render partial: "profile", locals: { user: @user } %>
-  <%= render partial: "shared/posts", locals: { posts: @posts } %>
+  <div class="my-[15px]">
+    <%= render partial: "shared/posts", locals: { posts: @posts } %>
+  </div>
 </div>

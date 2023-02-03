@@ -15,6 +15,7 @@
   <%= link_to "Gallery", gallery_user_path(user), class: "hover:text-neutral-100" %>
   <%= link_to "Following", following_user_path(user), class: "hover:text-neutral-100" %>
   <%= link_to "Followers", followers_user_path(user), class: "hover:text-neutral-100" %>
+  <%= link_to "Favorites", favorites_user_path(user), class: "hover:text-neutral-100" %>
 
   <% if current_user.following?(user) %>
     <%= render partial: "user_relationships/unfollow", locals: { user: user } %>

@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     @followers = @user.followers
   end
 
+  def favorites
+    @favorites = @user.favorite_posts
+  end
+
   private
 
   def find_user

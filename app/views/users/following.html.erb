@@ -1,6 +1,6 @@
 <div class="flex w-[100%] flex-col">
   <%= render partial: "profile", locals: { user: @user } %>
   <div class="my-[15px]">
-    <%= render partial: "follows", locals: { follows: @following } %>
+    <%= render partial: "user_relationships/follows", locals: { follows: @following } %>
   </div>
 </div>

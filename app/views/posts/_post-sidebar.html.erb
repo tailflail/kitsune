@@ -18,9 +18,9 @@
 
     <div>
       <% if current_user.has_favorite_post?(@post) %>
-        <%= render partial: "unfavorite", locals: { post: @post } %>
+        <%= render partial: "favorites/unfavorite", locals: { post: @post } %>
       <% elsif current_user != @post.user %>
-        <%= render partial: "favorite", locals: { post: @post } %>
+        <%= render partial: "favorites/favorite", locals: { post: @post } %>
     <% end %>
     </div>
   </div>

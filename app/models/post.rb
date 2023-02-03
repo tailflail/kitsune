@@ -9,6 +9,7 @@ class Post < ApplicationRecord
 
   has_one_attached :image, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   belongs_to :user
 
   accepts_nested_attributes_for :comments

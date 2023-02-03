@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   end
 
   resources :user_relationships, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy]
 end

@@ -11,7 +11,12 @@ class User < ApplicationRecord
             length: { minimum: 4, maximum: 16, message: "must be between 4 and 16 characters" },
             format: { with: /\A[a-zA-Z][a-zA-Z0-9]+\z/, message: "%{value} format is invalid" }
 
-  has_one_attached :avatar, dependent: :destroy
+  has_one_attached :avatar, dependent: :destroy do |attachable|
+    attachable.variant :xlarge, resize_to_limit: [248, 248]
+    attachable.variant :large, resize_to_limit: [150, 150]
+    attachable.variant :medium, resize_to_limit: [75, 75]
+    attachable.variant :small, resize_to_limit: [50, 50]
+  end
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy

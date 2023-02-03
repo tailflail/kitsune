@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center my-[50px]">
   <% if user.avatar.attached? %>
-    <%= image_tag user.avatar, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
+    <%= image_tag user.avatar.variant(:large), class: "min-w-[50px] rounded-lg" %>
   <% else %>
     <%= image_tag user.gravatar_url, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
   <% end %>

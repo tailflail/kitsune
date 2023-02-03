@@ -1,8 +1,12 @@
 <div class="flex flex-wrap items-center justify-center gap-2">
   <% posts.with_attached_image.each do |post| %>
-    <div class="bg-cover" style="background-image: url('<%= url_for(post.image) %>')">
+    <div class="bg-cover" style="background-image: url('<%= url_for(post.image.variant(size)) %>')">
       <a href="<%= post_path(post) %>">
-        <div class="p-[65px] md:p-[95px] lg:p-[124px]"></div>
+        <% if size == :xlarge %>
+          <div class="p-[65px] md:p-[95px] lg:p-[124px]"></div>
+        <% elsif size == :large %>
+          <div class="p-[60px] md:p-[70px] lg:p-[85px]"></div>
+        <% end %>
       </a>
     </div>
   <% end %>

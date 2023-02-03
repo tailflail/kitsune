@@ -1,6 +1,5 @@
 <div class="flex flex-wrap items-center justify-center gap-2">
   <% follows.each do |following| %>
-
     <% if following.avatar.attached? %>
       <div class="bg-cover" style="background-image: url('<%= url_for(following.avatar.variant(:xlarge)) %>')">
         <a href="<%= user_path(following) %>">

@@ -44,14 +44,6 @@
     <div>
       More posts from <span class="font-bold"><a href="<%= user_path(@post.user) %>" class="font-bold"><%= @post.user.username %></a></span>
     </div>
-    <div class="flex flex-wrap items-center justify-center gap-2">
-      <% @random_posts.with_attached_image.each do |post| %>
-        <div class="bg-cover" style="background-image: url('<%= url_for(post.image) %>')">
-          <a href="<%= post_path(post) %>">
-            <div class="p-[60px] md:p-[70px] lg:p-[85px]"></div>
-          </a>
-        </div>
-      <% end %>
-    </div>
+    <%= render partial: "shared/posts", locals: { posts: @random_posts, size: :large } %>
   </div>
 </div>

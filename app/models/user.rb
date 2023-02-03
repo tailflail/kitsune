@@ -12,10 +12,10 @@ class User < ApplicationRecord
             format: { with: /\A[a-zA-Z][a-zA-Z0-9]+\z/, message: "%{value} format is invalid" }
 
   has_one_attached :avatar, dependent: :destroy do |attachable|
-    attachable.variant :xlarge, resize_to_limit: [248, 248]
-    attachable.variant :large, resize_to_limit: [150, 150]
-    attachable.variant :medium, resize_to_limit: [75, 75]
-    attachable.variant :small, resize_to_limit: [50, 50]
+    attachable.variant :xlarge, resize_to_fill: [248, 248]
+    attachable.variant :large, resize_to_fill: [150, 150]
+    attachable.variant :medium, resize_to_fill: [75, 75]
+    attachable.variant :small, resize_to_fill: [50, 50]
   end
 
   has_many :posts, dependent: :destroy

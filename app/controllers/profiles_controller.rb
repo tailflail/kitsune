@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :find_and_authorize_profile
+  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :find_and_authorize_profile, only: [:edit, :update]
 
   def update
     if @profile.update(profile_params)

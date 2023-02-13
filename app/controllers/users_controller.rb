@@ -27,6 +27,6 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by(username: params[:username])
+    @user = User.includes(:profile).find_by(username: params[:username])
   end
 end

@@ -20,4 +20,5 @@ Rails.application.routes.draw do
 
   resources :user_relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
+  resources :profiles, only: [:edit, :update]
 end

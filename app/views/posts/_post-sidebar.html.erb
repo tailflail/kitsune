@@ -17,11 +17,13 @@
     </div>
 
     <div>
-      <% if current_user.has_favorite_post?(@post) %>
-        <%= render partial: "favorites/unfavorite", locals: { post: @post } %>
-      <% elsif current_user != @post.user %>
-        <%= render partial: "favorites/favorite", locals: { post: @post } %>
-    <% end %>
+      <% if current_user %>
+        <% if current_user.has_favorite_post?(@post) %>
+          <%= render partial: "favorites/unfavorite", locals: { post: @post } %>
+        <% elsif current_user != @post.user %>
+          <%= render partial: "favorites/favorite", locals: { post: @post } %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 

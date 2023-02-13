@@ -5,13 +5,17 @@
     <%= image_tag user.gravatar_url, class: "w-[75px] lg:w-[150px] min-w-[50px] rounded-lg" %>
   <% end %>
 
-  <h1 class="text-2xl font-bold mt-[10px]">
+  <h1 class="text-2xl font-bold mt-[5px]">
     @<%= user.username %>
   </h1>
 
-  <h2 class="flex text-s lg:w-[566px] mt-[20px]">
-    <p class="mr-[20px] break-normal">
-      <%= user.profile.short_biography %>
+  <p class="text-neutral-400 text-sm mt-[5px]">
+    Joined <%= user.creation_date %>
+  </p>
+
+  <h2 class="flex lg:w-[566px] mt-[20px]">
+    <p class="text-[15px] break-normal">
+      <%= user.profile.sanitized_short_biography.html_safe %>
     </p>
     <div>
       <% if current_user == user %>

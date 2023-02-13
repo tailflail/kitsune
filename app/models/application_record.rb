@@ -5,7 +5,6 @@ class ApplicationRecord < ActiveRecord::Base
   def creation_date
     created = DateTime.parse(self.created_at.to_s)
     date = created.strftime("#{created.day.ordinalize} %b %Y")
-
     "#{date}"
   end
 

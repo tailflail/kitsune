@@ -1,5 +1,5 @@
-<div class="flex justify-center items-center text-center relative">
-  <div class="devise-form">
+<div class="flex justify-center items-center text-center">
+  <div class="devise-form relative">
     <h1 class="text-2xl font-bold text-neutral-100">Sign in</h1>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field mt-12">
@@ -22,11 +22,11 @@
         <div class="actions mt-6">
           <%= f.submit "Sign in", class: "cursor-pointer px-6 py-1 rounded text-neutral-900 bg-neutral-200 hover:bg-neutral-300"%>
         </div>
-    <% end %>
 
-    <div class="mt-24">
-      <div class="mb-4">Don't have an account yet?</div>
-      <%= render "devise/shared/links" %>
-    </div>
+      <div class="mt-24">
+        <div class="mb-4">Don't have an account yet?</div>
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
   </div>
 </div>

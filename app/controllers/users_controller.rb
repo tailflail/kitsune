@@ -24,6 +24,10 @@ class UsersController < ApplicationController
     @favorites = @user.favorite_posts
   end
 
+  def about
+    @about = @user.profile.sanitized_long_biography
+  end
+
   private
 
   def find_user

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get "following", to: "users#following", as: "following"
       get "followers", to: "users#followers", as: "followers"
       get "favorites", to: "users#favorites", as: "favorites"
+      get "about", to: "users#about", as: "about"
     end
   end
 

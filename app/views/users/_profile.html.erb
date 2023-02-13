@@ -13,8 +13,8 @@
     Joined <%= user.creation_date %>
   </p>
 
-  <h2 class="flex justify-center lg:w-[566px] items-center mt-[20px]">
-    <p class="profile-links text-[15px] break-normal mr-[20px]">
+  <h2 class="flex flex-wrap lg:flex-nowrap justify-center lg:w-[566px] items-center mt-[20px] gap-3">
+    <p class="text-center items-center profile-links text-sm break-normal">
       <%= user.profile.sanitized_short_biography.html_safe %>
     </p>
     <div>
@@ -25,11 +25,21 @@
   </h2>
 </div>
 
-<div class="flex justify-center gap-20 items-center w-[100%] h-[65px] border-y-2 border-neutral-800">
+<div class="flex flex-wrap justify-center gap-8 lg:gap-20 items-center w-[100%] sm:h-[90px] py-[10px] lg:h-[65px] border-y-2 border-neutral-800">
   <%= link_to "Gallery", gallery_user_path(user), class: "hover:text-neutral-100" %>
-  <%= link_to "Following", following_user_path(user), class: "hover:text-neutral-100" %>
-  <%= link_to "Followers", followers_user_path(user), class: "hover:text-neutral-100" %>
+
+  <a href="<%= following_user_path(user) %>" class="hover:text-neutral-100">
+    Following
+    <span class="text-sm text-neutral-400">(<%= user.following.count %>)</span>
+  </a>
+
+  <a href="<%= followers_user_path(user) %>" class="hover:text-neutral-100">
+    Followers
+    <span class="text-sm text-neutral-400">(<%= user.followers.count %>)</span>
+  </a>
+
   <%= link_to "Favorites", favorites_user_path(user), class: "hover:text-neutral-100" %>
+  <%= link_to "About", about_user_path(user), class: "hover:text-neutral-100" %>
 
   <% if current_user %>
     <% if current_user.following?(user) %>

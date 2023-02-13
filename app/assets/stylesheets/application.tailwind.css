@@ -10,4 +10,8 @@
     .devise-form {
         @apply bg-none lg:border-2 border-neutral-700 rounded-lg lg:px-[100px] lg:py-[50px] m-4;
     }
+
+    .profile-links a {
+        @apply text-blue-400;
+    }
 }

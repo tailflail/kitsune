@@ -17,8 +17,4 @@ class Post < ApplicationRecord
   belongs_to :user
 
   accepts_nested_attributes_for :comments
-
-  def exists?
-    !self.id.nil?
-  end
 end

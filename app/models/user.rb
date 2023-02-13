@@ -18,6 +18,9 @@ class User < ApplicationRecord
     attachable.variant :small, resize_to_fill: [50, 50]
   end
 
+  has_one :profile, dependent: :destroy
+  after_create :create_profile
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -67,5 +70,11 @@ class User < ApplicationRecord
   # user_path helper links by username instead of id
   def to_param
     username
+  end
+
+  private
+
+  def create_profile
+    Profile.create(user_id: id)
   end
 end

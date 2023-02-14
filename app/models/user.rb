@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :username,
             length: { minimum: 4, maximum: 16, message: "must be between 4 and 16 characters" },
             format: { with: /\A[a-zA-Z][a-zA-Z0-9]+\z/, message: "%{value} format is invalid" }
+  validates :avatar, blob: { content_type: %w[image/png image/jpg image/jpeg image/gif],
+                                            size_range: 0.1..(10.megabytes) }
 
   has_one_attached :avatar, dependent: :destroy do |attachable|
     attachable.variant :xlarge, resize_to_fill: [248, 248]

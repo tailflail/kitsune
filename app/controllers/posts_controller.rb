@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @comments = @post.comments.includes(:user)
 
     # Provides links in the sidebar to view other posts by the author
-    @random_posts = Post.where(user_id: @post.user_id).order("RANDOM()").limit(6)
+    @recent_posts = Post.where(user_id: @post.user_id).where.not(id: @post.id).order(created_at: :desc).limit(6)
   end
 
   def create

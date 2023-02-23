@@ -46,6 +46,6 @@
     <div>
       More posts from <span class="font-bold"><a href="<%= user_path(@post.user) %>" class="font-bold"><%= @post.user.username %></a></span>
     </div>
-    <%= render partial: "shared/posts", locals: { posts: @random_posts, size: :large } %>
+    <%= render partial: "shared/posts", locals: { posts: @recent_posts, size: :large } %>
   </div>
 </div>

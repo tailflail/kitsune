@@ -12,15 +12,23 @@ These instructions are intended for Linux machines running [Docker](https://www.
 
 `git clone https://github.com/tailflail/kitsune.git`
 
-2. Build the Docker images for Kitsune and PostgreSQL
+2. Create a `.env` file in the root directory of the project and populate it with the following environment variables. These placeholders should be replaced with values of your choice (e.g. `POSTGRES_USER=kitsune`)
+
+```
+POSTGRES_USER=placeholder
+POSTGRES_PASSWORD=placeholder
+POSTGRES_HOST=placeholder
+```
+
+3. Build the Docker images for Kitsune and PostgreSQL
 
 `sudo docker compose up --build`
 
-3. Create and migrate the databases
+4. Create and migrate the databases
 
 `sudo docker exec -it kitsune-app sh -c "bin/rails db:create && bin/rails db:migrate"`
 
-4. Open http://localhost:3000 in your browser.
+5. Open http://localhost:3000 in your browser.
 
 ## Screenshots
 

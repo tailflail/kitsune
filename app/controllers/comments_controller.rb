@@ -1,14 +1,16 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_and_authorize_comment, only: [:destroy, :edit, :update]
-  before_action :find_post, only: [:create, :edit, :update]
+
+  def new
+    @comment = current_user.comments.build
+  end
 
   def create
-    @comment = @post.comments.build(comment_params)
-    @comment.user = current_user
+    @comment = current_user.comments.build(comment_params)
 
     if @comment.save
-      redirect_to @post
+      redirect_to @comment.post
     end
   end
 
@@ -20,7 +22,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to @post
+      redirect_to @comment.post
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,11 +35,7 @@ class CommentsController < ApplicationController
     authorize @comment
   end
 
-  def find_post
-    @post = Post.find(params[:post_id])
-  end
-
   def comment_params
-    params.require(:comment).permit(:body, :post_id)
+    params.require(:comment).permit(:body, :parent_id, :post_id)
   end
 end

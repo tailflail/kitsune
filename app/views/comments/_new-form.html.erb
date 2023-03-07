@@ -1,11 +1,14 @@
 <div class="text-center">
-  <%= form_with model: [@post, @post.comments.build] do |form| %>
-    <div>
+  <%= form_with model: @comment do |form| %>
+    <div class="mt-12">
+      <div><%= form.hidden_field :parent_id, value: :parent_id %></div>
+      <div><%= form.hidden_field :post_id, value: params[:post_id] %></div>
+
       <div><%= form.label :body, class: "hidden" %></div>
       <div><%= form.text_area :body, class: "devise-form-field lg:w-[600px] lg:h-[100px] lg:max-h-[200px] min-h-[100px] min-w-[300px]" %></div>
     </div>
 
-    <div class="mt-4">
+    <div class="mt-12">
       <%= form.submit class: "border rounded border-green-100 px-2 py-2 text-green-100 hover:bg-green-100 hover:text-green-900 cursor-pointer" %>
     </div>
   <% end %>

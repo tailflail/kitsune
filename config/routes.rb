@@ -5,9 +5,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :posts do
-    resources :comments, except: [:new, :show, :index]
-  end
+  resources :posts
+  resources :comments, except: [:show, :index]
 
   resources :users, only: [:show], param: :username do
     member do

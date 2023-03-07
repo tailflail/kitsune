@@ -4,16 +4,16 @@
       <%= image_tag @post.image, class: "max-w-[100%] lg:max-w-[1200px] lg:max-h-[1280px]" %>
     </div>
 
-    <%= render "post-description" %>
+    <%= render "description" %>
 
-    <%= render "post-comments" %>
+    <%= render partial: "comments", locals: { comments: @comments, post: @post } %>
 
     <div class="mt-6">
       <% if user_signed_in? %>
-        <%= render "comments/new-comment-form" %>
+        <%= render partial: "comments/embedded-new-form", locals: { comment: current_user.comments.build } %>
       <% end %>
     </div>
   </div>
 
-  <%= render "post-sidebar" %>
+  <%= render "sidebar" %>
 </div>

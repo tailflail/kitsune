@@ -20,7 +20,7 @@ These instructions are intended for Linux machines running [Docker](https://www.
 
 4. Create and migrate the databases
 
-`sudo docker exec -it kitsune-app sh -c "bin/rails db:create && bin/rails db:migrate"`
+`sudo docker exec -it kitsune-app-1 sh -c "bin/rails db:create && bin/rails db:migrate"`
 
 5. Open http://localhost:3000 in your browser
 

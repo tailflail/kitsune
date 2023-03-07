@@ -7,7 +7,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_HOST: ${POSTGRES_HOST}
-      PIDFILE: /tmp/pids/server.pid
     ports:
       - 3000:3000
     env_file:
@@ -16,6 +15,7 @@ services:
       - .:/app
     tmpfs:
       - /tmp/pids/
+    user: ${UID}:${GID}
   db:
     image: postgres:alpine3.17
     environment:

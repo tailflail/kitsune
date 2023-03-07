@@ -22,4 +22,4 @@ COPY . .
 EXPOSE 3000
 
 # Start the Rails development server
-CMD ["sh", "-c", "bin/rails server -b 0.0.0.0 && bin/rails tailwindcss:watch"]
+CMD ["sh", "-c", "rm -f tmp/pids/server.pid && bin/rails server -b 0.0.0.0 && bin/rails tailwindcss:watch"]

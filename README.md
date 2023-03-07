@@ -12,13 +12,7 @@ These instructions are intended for Linux machines running [Docker](https://www.
 
 `git clone https://github.com/tailflail/kitsune.git`
 
-2. Create a `.env` file in the root directory of the project and populate it with the following environment variables. These placeholders should be replaced with values of your choice (e.g. `POSTGRES_USER=kitsune`)
-
-```
-POSTGRES_USER=placeholder
-POSTGRES_PASSWORD=placeholder
-POSTGRES_HOST=placeholder
-```
+2. Modify the `.env.example` file with your chosen environment variables and rename it to `.env`. If you are unfamiliar with the `UID` and `GID` environment variables, these should respectively match the outputs of running the commands `echo $(id -u)` and `echo $(id -g)` in your terminal
 
 3. Build the Docker images for Kitsune and PostgreSQL
 
@@ -28,7 +22,7 @@ POSTGRES_HOST=placeholder
 
 `sudo docker exec -it kitsune-app sh -c "bin/rails db:create && bin/rails db:migrate"`
 
-5. Open http://localhost:3000 in your browser.
+5. Open http://localhost:3000 in your browser
 
 ## Screenshots
 

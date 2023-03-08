@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-3 mt-6 min-w-[100%] lg:w-[1200px] relative">
   <% comments.each do |comment| %>
     <div class="flex rounded-lg border border-neutral-700 p-4 relative">
-      <div class="flex gap-3">
+      <div class="flex gap-3 w-[100%]">
         <a href="<%= user_path(comment.user) %>" class="shrink-0">
           <% if comment.user.avatar.attached? %>
             <%= image_tag comment.user.avatar, class: "w-[75px] h-[75px] min-w-[50px] rounded-lg mx-auto block" %>
@@ -10,12 +10,23 @@
           <% end %>
         </a>
 
-        <div class="flex flex-col">
+        <div class="w-[100%]">
           <div class="font-bold">
             <a href="<%= user_path(comment.user) %>"><%= comment.user.username %></a>
           </div>
-          <div class="absolute right-[10px] text-sm text-neutral-500"><%= comment.creation_date %>, <%= comment.creation_time %></div>
-          <div class="break-all mt-2">
+
+          <div class="absolute right-[10px] top-[16px] text-sm text-neutral-500"><%= comment.creation_date %>, <%= comment.creation_time %></div>
+
+          <div class="break-all mt-2 w-[100%]">
+            <% unless comment.parent_id.nil? %>
+              <div class="p-[10px] flex flex-col rounded-lg bg-neutral-800 w-[100%] my-3">
+                <div class="font-bold mb-2">
+                  <a href="<%= user_path(comment.parent.user.username) %>"><%= comment.parent.user.username %></a>
+                </div>
+                <div><%= comment.parent.body %></div>
+              </div>
+            <% end %>
+
             <div><%= comment.body %></div>
           </div>
 
@@ -30,8 +41,7 @@
                               class: "inline-block px-3 py-2 leading-none rounded text-red-800 hover:text-neutral-100 border border-red-900 hover:bg-red-900" %>
               </div>
             <% elsif current_user %>
-              <div class="mt-4">
-              </div>
+              <%= link_to "Reply", new_comment_path(parent_id: comment.id, post_id: comment.post_id), class: "text-sm text-neutral-400 mt-2 hover:text-neutral-200" %>
             <% end %>
           </div>
         </div>

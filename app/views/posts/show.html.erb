@@ -1,19 +1,20 @@
 <div class="flex flex-wrap flex-col lg:flex-row justify-center text-neutral-100 gap-[100px] m-[10px] lg:m-[20px] lg:py-[50px]">
-  <div class="flex flex-col items-center lg:min-w-[1200px]">
-    <div class="mb-6">
-      <%= image_tag @post.image, class: "max-w-[100%] lg:max-w-[1200px] lg:max-h-[1280px]" %>
+
+    <div>
+      <div class="mb-6">
+        <%= image_tag @post.image, class: "max-w-[100%] lg:max-w-[1200px] lg:max-h-[1280px]" %>
+      </div>
+
+      <%= render "description" %>
+
+      <%= render partial: "comments", locals: { comments: @comments, post: @post } %>
+
+      <div class="mt-6">
+        <% if user_signed_in? %>
+          <%= render partial: "comments/embedded-new-form", locals: { comment: current_user.comments.build } %>
+        <% end %>
+      </div>
     </div>
-
-    <%= render "description" %>
-
-    <%= render partial: "comments", locals: { comments: @comments, post: @post } %>
-
-    <div class="mt-6">
-      <% if user_signed_in? %>
-        <%= render partial: "comments/embedded-new-form", locals: { comment: current_user.comments.build } %>
-      <% end %>
-    </div>
-  </div>
 
   <%= render "sidebar" %>
 </div>

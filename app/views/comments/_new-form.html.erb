@@ -1,7 +1,7 @@
 <div class="text-center">
   <%= form_with model: @comment do |form| %>
     <div class="mt-12">
-      <div><%= form.hidden_field :parent_id, value: :parent_id %></div>
+      <div><%= form.hidden_field :parent_id, value: params[:parent_id] %></div>
       <div><%= form.hidden_field :post_id, value: params[:post_id] %></div>
 
       <div><%= form.label :body, class: "hidden" %></div>

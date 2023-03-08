@@ -1,7 +1,6 @@
 <div class="text-center">
   <%= form_with model: comment do |form| %>
     <div>
-      <div><%= form.hidden_field :parent_id, value: :parent_id %></div>
       <div><%= form.hidden_field :post_id, value: params[:id] %></div>
 
       <div><%= form.label :body, class: "hidden" %></div>

@@ -5,4 +5,8 @@ class Comment < ApplicationRecord
   belongs_to :post
 
   has_many :replies, class_name: "Comment", foreign_key: "parent_id", dependent: :destroy
+
+  def parent
+    Comment.find(self.parent_id)
+  end
 end
